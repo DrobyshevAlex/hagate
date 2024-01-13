@@ -5,12 +5,12 @@
 #include <list>
 #include "Base.h"
 
-#define PAYLOAD_LEN 256
+#define PAYLOAD_LEN 700
 
-class Gate : Base
+class Cover : Base
 {
 public:
-    Gate(
+    Cover(
         const char *name,
         Device *device,
         EntityCategory *entityCategory,
@@ -29,8 +29,20 @@ public:
         _state = 2;
     }
 
+    void setStateTopic(char *v)
+    {
+        _state_topic = v;
+    }
+
+    void setCommandTopic(char *v)
+    {
+        _command_topic = v;
+    }
+
 private:
     uint8_t _state;
 
+    char *_state_topic = NULL;
+    char *_command_topic = NULL;
     char _payload[PAYLOAD_LEN] = {0};
 };

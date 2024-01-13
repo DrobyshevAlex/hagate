@@ -29,24 +29,17 @@ uint16_t ConfigMgr::calculateChecksum(uint8_t *buf, uint16_t size)
     return crc;
 }
 
-WiFiConfigData ConfigMgr::getWiFIConfigData()
+void ConfigMgr::load()
 {
-    WiFiConfigData data;
-    strcpy(data.ssid, WIFI_SSID);
-    strcpy(data.password, WIFI_PASSWORD);
-    return data;
-}
+    strcpy(_wifi.ssid, WIFI_SSID);
+    strcpy(_wifi.password, WIFI_PASSWORD);
 
-MQTTConfigData ConfigMgr::getMQTTConfigData()
-{
-    MQTTConfigData data;
-    strcpy(data.mqttHost, MQTT_HOST);
-    data.mqttPort = MQTT_PORT;
-    strcpy(data.mqttLogin, MQTT_LOGIN);
-    strcpy(data.mqttPassword, MQTT_PASSWORD);
-    strcpy(data.mqttHADiscoveryPrefix, MQTT_PREFIX);
+    strcpy(_mqtt.mqttHost, MQTT_HOST);
+    _mqtt.mqttPort = MQTT_PORT;
+    strcpy(_mqtt.mqttLogin, MQTT_LOGIN);
+    strcpy(_mqtt.mqttPassword, MQTT_PASSWORD);
 
-    snprintf(data.mqttStateTopic, MQTT_TOPIC_LEN, "hagate/%s/state", getChipID());
-    snprintf(data.mqttCommandTopic, MQTT_TOPIC_LEN, "hagate/%s/set", getChipID());
-    return data;
+    snprintf(_discovery.mqttStateTopic, MQTT_TOPIC_LEN, "hagate/%s/state", getChipID());
+    snprintf(_discovery.mqttCommandTopic, MQTT_TOPIC_LEN, "hagate/%s/set", getChipID());
+    strcpy(_discovery.prefix, MQTT_PREFIX);
 }

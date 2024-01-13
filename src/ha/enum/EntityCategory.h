@@ -5,4 +5,3 @@
 typedef const char EntityCategory;
 
 const EntityCategory entityCategoryConfig[] = "config";
-const EntityCategory entityCategoryDiagnostic[] = "diagnostic";

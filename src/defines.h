@@ -8,6 +8,11 @@
 #define OUT_CLK 13
 #define OUT_LATCH 14
 
+#define EXT_OPEN 1
+#define EXT_CLOSE 2
+#define EXT_STOP 3
+#define EXT_SBS 4
+
 #define BTN1 4
 #define BTN2 5
 

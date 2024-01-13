@@ -12,5 +12,5 @@ struct WiFiConfigData
 class WiFiConfig
 {
 public:
-  virtual WiFiConfigData getWiFIConfigData() = 0;
+  virtual WiFiConfigData *getWiFIConfigData() = 0;
 };

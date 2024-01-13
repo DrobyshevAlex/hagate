@@ -3,10 +3,10 @@
 
 void WiFiManager::connect()
 {
-  WiFiConfigData data = _cnf->getWiFIConfigData();
+  WiFiConfigData *data = _cnf->getWiFIConfigData();
   Serial.println("WiFi STA");
   WiFi.mode(WIFI_STA);
-  WiFi.begin(data.ssid, data.password);
+  WiFi.begin(data->ssid, data->password);
 }
 
 bool WiFiManager::isConnected()

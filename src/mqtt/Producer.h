@@ -6,10 +6,6 @@ class Producer
 {
 public:
     Producer(MQTT *mqtt) : _mqtt(mqtt) {}
-    void init(const char *topic)
-    {
-        strcpy(_topic, topic);
-    }
 
     const char *getTopicName() { return _topic; }
 

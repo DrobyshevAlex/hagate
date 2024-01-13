@@ -44,6 +44,11 @@ public:
         }
     }
 
+    bool isConnected()
+    {
+        return _client.connected();
+    }
+
 private:
     void callback(char *raw_topic, byte *raw_payload, unsigned int length);
 

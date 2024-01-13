@@ -9,6 +9,16 @@
     "string_view": "cpp",
     "initializer_list": "cpp",
     "ranges": "cpp",
-    "regex": "cpp"
-  }
+    "regex": "cpp",
+    "*.tcc": "cpp",
+    "bitset": "cpp",
+    "optional": "cpp",
+    "functional": "cpp",
+    "random": "cpp",
+    "istream": "cpp",
+    "ostream": "cpp",
+    "sstream": "cpp",
+    "streambuf": "cpp"
+  },
+  "cmake.configureOnOpen": false
 }

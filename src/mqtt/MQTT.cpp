@@ -5,8 +5,8 @@
 
 void MQTT::init()
 {
-    MQTTConfigData data = _cnf->getMQTTConfigData();
-    if (strlen(data.mqttHost) == 0)
+    MQTTConfigData *data = _cnf->getMQTTConfigData();
+    if (strlen(data->mqttHost) == 0)
     {
         return;
     }
@@ -15,11 +15,11 @@ void MQTT::init()
                         { callback(raw_topic, raw_payload, length); });
 
     _wifiClient.setTimeout(MQTT_SOCKET_TIMEOUT * 1000);
-    _client.setBufferSize(256);
+    _client.setBufferSize(700);
     _client.setSocketTimeout(MQTT_SOCKET_TIMEOUT);
-    _client.setServer(data.mqttHost, data.mqttPort);
+    _client.setServer(data->mqttHost, data->mqttPort);
 
-    Serial.printf("MQTT client conn %s,  %d\r\n", data.mqttHost, data.mqttPort);
+    Serial.printf("MQTT client conn %s,  %d\r\n", data->mqttHost, data->mqttPort);
 
     _isConfigured = true;
 }
@@ -33,9 +33,9 @@ void MQTT::reconnect()
 
     if (_lastReconnectTime + 1000 < millis())
     {
-        MQTTConfigData data = _cnf->getMQTTConfigData();
-        Serial.printf("TRY conn %s, %s, %s\r\n", _clientID, data.mqttLogin, data.mqttPassword);
-        if (_client.connect(_clientID, data.mqttLogin, data.mqttPassword))
+        MQTTConfigData *data = _cnf->getMQTTConfigData();
+        Serial.printf("TRY conn %s, %s, %s\r\n", _clientID, data->mqttLogin, data->mqttPassword);
+        if (_client.connect(_clientID, data->mqttLogin, data->mqttPassword))
         {
             Serial.println("CONN");
             for (auto consumer : _consumers)
